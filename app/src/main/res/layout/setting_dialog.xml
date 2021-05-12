@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="21dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <TextView
+        android:id="@+id/settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="23dp"
+        android:fontFamily="@font/montserratbold"
+        android:text="@string/settings"
+        android:textColor="#085B56"
+        android:textSize="36sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+         />
+
+    <TextView
+        android:id="@+id/focusTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="47dp"
+        android:fontFamily="@font/montserratbold"
+        android:text="@string/focus_time"
+        android:paddingRight="5dp"
+        android:textColor="#085B56"
+        android:textSize="14sp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/settings"
+        android:layout_marginStart="70dp"
+        android:paddingEnd="5dp"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/focusNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserratbold"
+        android:text="@string/_0_focus"
+        android:paddingRight="5dp"
+        android:textColor="#085B56"
+        android:textSize="14sp"
+        app:layout_constraintLeft_toRightOf="@id/focusTime"
+        app:layout_constraintTop_toTopOf="@id/focusTime"
+        app:layout_constraintBottom_toBottomOf="@id/focusTime"
+        android:paddingEnd="5dp"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/focusMin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserratbold"
+        android:text="@string/mins"
+        android:textColor="#085B56"
+        android:textSize="14sp"
+        app:layout_constraintLeft_toRightOf="@id/focusNumber"
+        app:layout_constraintTop_toTopOf="@id/focusNumber"
+        app:layout_constraintBottom_toBottomOf="@id/focusNumber"/>
+
+    <SeekBar
+        android:id="@+id/focusBar"
+        android:layout_width="220dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="12dp"
+        android:max="45"
+        android:progress="0"
+        app:layout_constraintHorizontal_bias="0.366"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/focusTime" />
+
+    <TextView
+        android:id="@+id/zeroFocus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/_0_focus"
+        android:textSize="18sp"
+        android:fontFamily="@font/montserratbold"
+        android:textColor="#085B56"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/focusBar"
+        app:layout_constraintTop_toBottomOf="@id/focusBar" />
+
+    <TextView
+        android:id="@+id/hundredFocus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/_45"
+        android:textSize="18sp"
+        android:fontFamily="@font/montserratbold"
+        android:textColor="#085B56"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toRightOf="@id/focusBar"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/focusBar" />
+
+    <TextView
+        android:id="@+id/sessions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="47dp"
+        android:fontFamily="@font/montserratbold"
+        android:text="@string/no_of_sessions"
+        android:paddingRight="5dp"
+        android:textColor="#085B56"
+        android:textSize="14sp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/breakBar"
+        android:layout_marginStart="70dp"
+        android:paddingEnd="5dp"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/sessionsNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserratbold"
+        android:text="@string/_0_focus"
+        android:paddingRight="5dp"
+        android:textColor="#085B56"
+        android:textSize="14sp"
+        app:layout_constraintLeft_toRightOf="@id/sessions"
+        app:layout_constraintTop_toTopOf="@id/sessions"
+        app:layout_constraintBottom_toBottomOf="@id/sessions"
+        android:paddingEnd="5dp"
+        tools:ignore="RtlSymmetry" />
+
+    <SeekBar
+        android:id="@+id/sessionsBar"
+        android:layout_width="220dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="12dp"
+        android:max="10"
+        android:progress="0"
+        app:layout_constraintHorizontal_bias="0.366"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sessions" />
+
+    <TextView
+        android:id="@+id/zeroSessions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:max="100"
+        android:progress="0"
+        android:text="@string/_0_focus"
+        android:textSize="18sp"
+        android:fontFamily="@font/montserratbold"
+        android:textColor="#085B56"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/sessionsBar"
+        app:layout_constraintTop_toBottomOf="@id/sessionsBar" />
+
+    <TextView
+        android:id="@+id/hundredSessions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/_10"
+        android:textSize="18sp"
+        android:fontFamily="@font/montserratbold"
+        android:textColor="#085B56"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toRightOf="@id/sessionsBar"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sessionsBar" />
+
+    <TextView
+        android:id="@+id/breakTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="47dp"
+        android:fontFamily="@font/montserratbold"
+        android:text="@string/break_time"
+        android:textColor="#085B56"
+        android:textSize="14sp"
+        android:paddingRight="5dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/focusBar"
+        android:layout_marginStart="70dp"
+        android:paddingEnd="5dp"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/breakNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserratbold"
+        android:text="@string/_0_focus"
+        android:paddingRight="5dp"
+        android:textColor="#085B56"
+        android:textSize="14sp"
+        app:layout_constraintLeft_toRightOf="@id/breakTime"
+        app:layout_constraintTop_toTopOf="@id/breakTime"
+        app:layout_constraintBottom_toBottomOf="@id/breakTime"
+        android:paddingEnd="5dp"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/breakMin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserratbold"
+        android:text="@string/mins"
+        android:textColor="#085B56"
+        android:textSize="14sp"
+        app:layout_constraintLeft_toRightOf="@id/breakNumber"
+        app:layout_constraintTop_toTopOf="@id/breakNumber"
+        app:layout_constraintBottom_toBottomOf="@id/breakNumber"/>
+
+    <SeekBar
+        android:id="@+id/breakBar"
+        android:layout_width="220dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="12dp"
+        android:max="20"
+        android:progress="0"
+        app:layout_constraintHorizontal_bias="0.366"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/breakTime" />
+
+    <TextView
+        android:id="@+id/zeroBreak"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/_0_focus"
+        android:textSize="18sp"
+        android:fontFamily="@font/montserratbold"
+        android:textColor="#085B56"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/breakBar"
+        app:layout_constraintTop_toBottomOf="@id/breakBar" />
+
+    <TextView
+        android:id="@+id/hundredBreak"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="1dp"
+        android:text="@string/_20"
+        android:textSize="18sp"
+        android:fontFamily="@font/montserratbold"
+        android:textColor="#085B56"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toRightOf="@id/breakBar"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/breakBar"
+        android:layout_marginEnd="1dp" />
+
+    <ImageButton
+        android:id="@+id/tickButton"
+        android:layout_width="95dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="63dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.08"
+        app:layout_constraintLeft_toRightOf="@id/zeroSessions"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/zeroSessions"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/tickbutton2"
+        tools:ignore="ContentDescription" />
+
+    <ImageButton
+        android:id="@+id/crossButton"
+        android:layout_width="95dp"
+        android:layout_height="43dp"
+        android:layout_marginLeft="33dp"
+        android:layout_marginTop="63dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toRightOf="@id/tickButton"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/zeroSessions"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/crossbutton2"
+        tools:ignore="ContentDescription"
+        android:layout_marginStart="33dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingBottom="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/distractedBabyImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/distracted_baby"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="20dp"
+        android:visibility="invisible"
+        tools:ignore="ContentDescription" />
+    
+    <View
+        android:id="@+id/distractedBabyDivider"
+        android:layout_width="wrap_content"
+        android:layout_height="4dp"
+        android:background="#085B56"
+        app:layout_constraintRight_toRightOf="parent"
+        android:visibility="invisible"
+        app:layout_constraintTop_toBottomOf="@id/distractedBabyImage"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <TextView
+        android:id="@+id/distracted_babyText"
+        android:layout_width="wrap_content"
+        android:layout_height="33dp"
+        android:fontFamily="@font/montserratbold"
+        android:gravity="center"
+        android:text="@string/distracted_baby"
+        android:textColor="#085B56"
+        android:textSize="24sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@id/distracted_baby_description"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/distractedBabyDivider" />
+
+    <TextView
+        android:id="@+id/distracted_baby_description"
+        android:layout_width="274dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="23dp"
+        android:layout_marginRight="18dp"
+        android:fontFamily="@font/montserratbold"
+        app:layout_constraintTop_toBottomOf="@id/distracted_babyText"
+        android:gravity="center"
+        android:text="@string/distracted_baby_description"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.468"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginEnd="18dp"
+        android:visibility="invisible"
+        android:layout_marginStart="23dp" />
+
+
+    <ImageView
+        android:id="@+id/aspiringMonkImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/aspiring_monk"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:visibility="invisible"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="20dp"
+        tools:ignore="ContentDescription" />
+
+    <View
+        android:id="@+id/aspiringMonkDivider"
+        android:layout_width="wrap_content"
+        android:layout_height="4dp"
+        android:background="#085B56"
+        app:layout_constraintRight_toRightOf="parent"
+        android:visibility="invisible"
+        app:layout_constraintTop_toBottomOf="@id/aspiringMonkImage"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <TextView
+        android:id="@+id/aspiringMonkText"
+        android:layout_width="wrap_content"
+        android:layout_height="33dp"
+        android:fontFamily="@font/montserratbold"
+        android:gravity="center"
+        android:text="@string/aspiring_monk"
+        android:textColor="#085B56"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@id/aspiring_monk_description"
+        android:visibility="invisible"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/aspiringMonkDivider"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/aspiring_monk_description"
+        android:layout_width="274dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="23dp"
+        android:layout_marginRight="18dp"
+        android:fontFamily="@font/montserratbold"
+        app:layout_constraintTop_toBottomOf="@id/aspiringMonkText"
+        android:visibility="invisible"
+        android:gravity="center"
+        android:text="@string/aspiring_monk_description"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.468"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginEnd="18dp"
+        android:layout_marginStart="23dp" />
+
+    <ImageView
+        android:id="@+id/calmInCalamityImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/calm_in_calamity"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="20dp"
+        android:visibility="invisible"
+        tools:ignore="ContentDescription" />
+
+    <View
+        android:id="@+id/calmInCalamityDivider"
+        android:layout_width="wrap_content"
+        android:layout_height="4dp"
+        android:background="#085B56"
+        app:layout_constraintRight_toRightOf="parent"
+        android:visibility="invisible"
+        app:layout_constraintTop_toBottomOf="@id/calmInCalamityImage"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <TextView
+        android:id="@+id/calmInCalamityText"
+        android:layout_width="wrap_content"
+        android:layout_height="33dp"
+        android:fontFamily="@font/montserratbold"
+        android:gravity="center"
+        android:text="@string/calm_in_calamity"
+        android:textColor="#085B56"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@id/calmInCalamityDescription"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/calmInCalamityDivider"
+        android:layout_marginTop="13dp"
+        android:visibility="invisible"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/calmInCalamityDescription"
+        android:layout_width="274dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="23dp"
+        android:layout_marginRight="18dp"
+        android:fontFamily="@font/montserratbold"
+        app:layout_constraintTop_toBottomOf="@id/calmInCalamityText"
+        android:gravity="center"
+        android:text="@string/calmInCalamityDescription"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.468"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginEnd="18dp"
+        android:visibility="invisible"
+        android:layout_marginStart="23dp" />
+
+    <ImageView
+        android:id="@+id/glimpseOfInnerPeaceImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/glimpse_of_inner_peace"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="20dp"
+        android:visibility="invisible"
+        tools:ignore="ContentDescription" />
+
+    <View
+        android:id="@+id/glimpseOfInnerPeaceDivider"
+        android:layout_width="wrap_content"
+        android:layout_height="4dp"
+        android:background="#085B56"
+        app:layout_constraintRight_toRightOf="parent"
+        android:visibility="invisible"
+        app:layout_constraintTop_toBottomOf="@id/glimpseOfInnerPeaceImage"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+
+    <TextView
+        android:id="@+id/glimpseOfInnerPeaceText"
+        android:layout_width="wrap_content"
+        android:layout_height="33dp"
+        android:fontFamily="@font/montserratbold"
+        android:gravity="center"
+        android:text="@string/glimpseofinnerpeace"
+        android:textColor="#085B56"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@id/glimpseOfInnerPeaceDescription"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/glimpseOfInnerPeaceDivider"
+        android:layout_marginTop="13dp"
+        android:visibility="invisible"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/glimpseOfInnerPeaceDescription"
+        android:layout_width="274dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="23dp"
+        android:layout_marginRight="18dp"
+        android:fontFamily="@font/montserratbold"
+        app:layout_constraintTop_toBottomOf="@id/glimpseOfInnerPeaceText"
+        android:gravity="center"
+        android:text="@string/glimpseOfInnerPeaceDescription"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.468"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginEnd="18dp"
+        android:visibility="invisible"
+        android:layout_marginStart="23dp" />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

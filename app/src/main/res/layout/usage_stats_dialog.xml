@@ -1,0 +1,650 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="100dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <TextView
+        android:id="@+id/usageStatsText"
+        android:layout_width="wrap_content"
+        android:layout_height="33dp"
+        android:text="@string/usage_statistics"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="29dp"
+        android:textSize="24sp"
+        android:fontFamily="@font/montserratbold"
+        android:textColor="#085B56" />
+
+    <TextView
+        android:id="@+id/date1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/date1"
+        android:layout_marginTop="41dp"
+        android:fontFamily="@font/montserratbold"
+        android:textColor="#000000"
+        app:layout_constraintLeft_toLeftOf="@id/usageStatsText"
+        app:layout_constraintHorizontal_bias="0.0"
+        android:layout_marginLeft="40dp"
+        android:textSize="18sp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/usageStatsText"
+        android:layout_marginStart="40dp" />
+
+    <TextView
+        android:id="@+id/colon1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/colon"
+        android:layout_marginTop="41dp"
+        android:fontFamily="@font/montserratbold"
+        android:textColor="#000000"
+        app:layout_constraintLeft_toRightOf="@id/date1"
+        app:layout_constraintHorizontal_bias="0.0"
+        android:textSize="18sp"
+        android:paddingLeft="2dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/usageStatsText"
+        android:paddingStart="2dp"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/time1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/time1"
+        android:layout_marginTop="41dp"
+        android:fontFamily="@font/montserratbold"
+        android:textColor="#000000"
+        app:layout_constraintLeft_toRightOf="@id/colon1"
+        android:paddingLeft="5dp"
+        app:layout_constraintHorizontal_bias="0.00"
+        android:textSize="18sp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/usageStatsText"
+        android:paddingStart="5dp"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/Mins1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Mins"
+        android:layout_marginTop="41dp"
+        android:fontFamily="@font/montserratbold"
+        android:textColor="#000000"
+        app:layout_constraintLeft_toRightOf="@id/time1"
+        android:paddingLeft="5dp"
+        app:layout_constraintHorizontal_bias="0.00"
+        android:textSize="18sp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/usageStatsText"
+        android:paddingStart="5dp"
+        tools:ignore="RtlSymmetry" />
+
+
+    <TextView
+        android:id="@+id/date2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/date2"
+        android:fontFamily="@font/montserratbold"
+        android:textColor="#000000"
+        app:layout_constraintLeft_toLeftOf="@id/date1"
+        android:textSize="18sp"
+        app:layout_constraintRight_toRightOf="@id/date1"
+        app:layout_constraintTop_toBottomOf="@id/date1"/>
+
+    <TextView
+        android:id="@+id/colon2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/colon"
+        android:fontFamily="@font/montserratbold"
+        android:textColor="#000000"
+        app:layout_constraintLeft_toRightOf="@id/date1"
+        app:layout_constraintHorizontal_bias="0.0"
+        android:textSize="18sp"
+        android:paddingLeft="1dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/colon1"
+        android:paddingStart="1dp"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/time2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/time2"
+        android:fontFamily="@font/montserratbold"
+        android:textColor="#000000"
+        app:layout_constraintLeft_toRightOf="@id/colon2"
+        android:paddingLeft="5dp"
+        app:layout_constraintHorizontal_bias="0.00"
+        android:textSize="18sp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/time1"
+        android:paddingStart="5dp"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/Mins2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Mins"
+        android:fontFamily="@font/montserratbold"
+        android:textColor="#000000"
+        app:layout_constraintLeft_toRightOf="@id/time2"
+        android:paddingLeft="5dp"
+        app:layout_constraintHorizontal_bias="0.00"
+        android:textSize="18sp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Mins1"
+        android:paddingStart="5dp"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/date3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/date3"
+        android:fontFamily="@font/montserratbold"
+        android:textColor="#000000"
+        app:layout_constraintLeft_toLeftOf="@id/date1"
+        android:textSize="18sp"
+        app:layout_constraintRight_toRightOf="@id/date1"
+        app:layout_constraintTop_toBottomOf="@id/date2"/>
+
+    <TextView
+        android:id="@+id/colon3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/colon"
+        android:fontFamily="@font/montserratbold"
+        android:textColor="#000000"
+        app:layout_constraintLeft_toRightOf="@id/date1"
+        app:layout_constraintHorizontal_bias="0.0"
+        android:textSize="18sp"
+        android:paddingLeft="1dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/colon2"
+        android:paddingStart="1dp"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/time3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/time3"
+        android:fontFamily="@font/montserratbold"
+        android:textColor="#000000"
+        app:layout_constraintLeft_toRightOf="@id/colon3"
+        android:paddingLeft="5dp"
+        app:layout_constraintHorizontal_bias="0.00"
+        android:textSize="18sp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/time2"
+        android:paddingStart="5dp"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/Mins3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Mins"
+        android:fontFamily="@font/montserratbold"
+        android:textColor="#000000"
+        app:layout_constraintLeft_toRightOf="@id/time3"
+        android:paddingLeft="5dp"
+        app:layout_constraintHorizontal_bias="0.00"
+        android:textSize="18sp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Mins2"
+        android:paddingStart="5dp"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/date4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/date4"
+        android:fontFamily="@font/montserratbold"
+        android:textColor="#000000"
+        app:layout_constraintLeft_toLeftOf="@id/date1"
+        android:textSize="18sp"
+        app:layout_constraintRight_toRightOf="@id/date1"
+        app:layout_constraintTop_toBottomOf="@id/date3"/>
+
+    <TextView
+        android:id="@+id/colon4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/colon"
+        android:fontFamily="@font/montserratbold"
+        android:textColor="#000000"
+        app:layout_constraintLeft_toRightOf="@id/date1"
+        app:layout_constraintHorizontal_bias="0.0"
+        android:textSize="18sp"
+        android:paddingLeft="2dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/colon3"
+        android:paddingStart="2dp"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/time4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/time4"
+        android:fontFamily="@font/montserratbold"
+        android:textColor="#000000"
+        app:layout_constraintLeft_toRightOf="@id/colon4"
+        android:paddingLeft="5dp"
+        app:layout_constraintHorizontal_bias="0.00"
+        android:textSize="18sp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/time3"
+        android:paddingStart="5dp"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/Mins4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Mins"
+        android:fontFamily="@font/montserratbold"
+        android:textColor="#000000"
+        app:layout_constraintLeft_toRightOf="@id/time4"
+        android:paddingLeft="5dp"
+        app:layout_constraintHorizontal_bias="0.00"
+        android:textSize="18sp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Mins3"
+        android:paddingStart="5dp"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/date5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/date5"
+        android:fontFamily="@font/montserratbold"
+        android:textColor="#000000"
+        app:layout_constraintLeft_toLeftOf="@id/date1"
+        android:textSize="18sp"
+        app:layout_constraintRight_toRightOf="@id/date1"
+        app:layout_constraintTop_toBottomOf="@id/date4"/>
+
+    <TextView
+        android:id="@+id/colon5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/colon"
+        android:fontFamily="@font/montserratbold"
+        android:textColor="#000000"
+        app:layout_constraintLeft_toRightOf="@id/date1"
+        app:layout_constraintHorizontal_bias="0.0"
+        android:textSize="18sp"
+        android:paddingLeft="2dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/colon4"
+        android:paddingStart="2dp"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/time5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/time5"
+        android:fontFamily="@font/montserratbold"
+        android:textColor="#000000"
+        app:layout_constraintLeft_toRightOf="@id/colon5"
+        android:paddingLeft="5dp"
+        app:layout_constraintHorizontal_bias="0.00"
+        android:textSize="18sp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/time4"
+        android:paddingStart="5dp"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/Mins5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Mins"
+        android:fontFamily="@font/montserratbold"
+        android:textColor="#000000"
+        app:layout_constraintLeft_toRightOf="@id/time5"
+        android:paddingLeft="5dp"
+        app:layout_constraintHorizontal_bias="0.00"
+        android:textSize="18sp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Mins4"
+        android:paddingStart="5dp"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/date6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/date6"
+        android:fontFamily="@font/montserratbold"
+        android:textColor="#000000"
+        app:layout_constraintLeft_toLeftOf="@id/date1"
+        android:textSize="18sp"
+        app:layout_constraintRight_toRightOf="@id/date1"
+        app:layout_constraintTop_toBottomOf="@id/date5"/>
+
+    <TextView
+        android:id="@+id/colon6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/colon"
+        android:fontFamily="@font/montserratbold"
+        android:textColor="#000000"
+        app:layout_constraintLeft_toRightOf="@id/date1"
+        app:layout_constraintHorizontal_bias="0.0"
+        android:textSize="18sp"
+        android:paddingLeft="2dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/colon5"
+        android:paddingStart="2dp"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/time6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/time6"
+        android:fontFamily="@font/montserratbold"
+        android:textColor="#000000"
+        app:layout_constraintLeft_toRightOf="@id/colon6"
+        android:paddingLeft="5dp"
+        app:layout_constraintHorizontal_bias="0.00"
+        android:textSize="18sp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/time5"
+        android:paddingStart="5dp"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/Mins6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Mins"
+        android:fontFamily="@font/montserratbold"
+        android:textColor="#000000"
+        app:layout_constraintLeft_toRightOf="@id/time6"
+        android:paddingLeft="5dp"
+        app:layout_constraintHorizontal_bias="0.00"
+        android:textSize="18sp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Mins5"
+        android:paddingStart="5dp"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/date7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/date7"
+        android:fontFamily="@font/montserratbold"
+        android:textColor="#000000"
+        app:layout_constraintLeft_toLeftOf="@id/date1"
+        android:textSize="18sp"
+        app:layout_constraintRight_toRightOf="@id/date1"
+        app:layout_constraintTop_toBottomOf="@id/date6"/>
+
+    <TextView
+        android:id="@+id/colon7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/colon"
+        android:fontFamily="@font/montserratbold"
+        android:textColor="#000000"
+        app:layout_constraintLeft_toRightOf="@id/date1"
+        app:layout_constraintHorizontal_bias="0.0"
+        android:textSize="18sp"
+        android:paddingLeft="2dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/colon6"
+        android:paddingStart="2dp"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/time7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/time7"
+        android:fontFamily="@font/montserratbold"
+        android:textColor="#000000"
+        app:layout_constraintLeft_toRightOf="@id/colon7"
+        android:paddingLeft="5dp"
+        app:layout_constraintHorizontal_bias="0.00"
+        android:textSize="18sp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/time6"
+        android:paddingStart="5dp"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/Mins7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Mins"
+        android:fontFamily="@font/montserratbold"
+        android:textColor="#000000"
+        app:layout_constraintLeft_toRightOf="@id/time7"
+        android:paddingLeft="5dp"
+        app:layout_constraintHorizontal_bias="0.00"
+        android:textSize="18sp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Mins6"
+        android:paddingStart="5dp"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/date8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/date8"
+        android:fontFamily="@font/montserratbold"
+        android:textColor="#000000"
+        app:layout_constraintLeft_toLeftOf="@id/date1"
+        android:textSize="18sp"
+        app:layout_constraintRight_toRightOf="@id/date1"
+        app:layout_constraintTop_toBottomOf="@id/date7"/>
+
+    <TextView
+        android:id="@+id/colon8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/colon"
+        android:fontFamily="@font/montserratbold"
+        android:textColor="#000000"
+        app:layout_constraintLeft_toRightOf="@id/date1"
+        app:layout_constraintHorizontal_bias="0.0"
+        android:textSize="18sp"
+        android:paddingLeft="2dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/colon7"
+        android:paddingStart="2dp"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/time8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/time8"
+        android:fontFamily="@font/montserratbold"
+        android:textColor="#000000"
+        app:layout_constraintLeft_toRightOf="@id/colon8"
+        android:paddingLeft="5dp"
+        app:layout_constraintHorizontal_bias="0.00"
+        android:textSize="18sp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/time7"
+        android:paddingStart="5dp"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/Mins8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Mins"
+        android:fontFamily="@font/montserratbold"
+        android:textColor="#000000"
+        app:layout_constraintLeft_toRightOf="@id/time8"
+        android:paddingLeft="5dp"
+        app:layout_constraintHorizontal_bias="0.00"
+        android:textSize="18sp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Mins7"
+        android:paddingStart="5dp"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/date9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/date9"
+        android:fontFamily="@font/montserratbold"
+        android:textColor="#000000"
+        app:layout_constraintLeft_toLeftOf="@id/date1"
+        android:textSize="18sp"
+        app:layout_constraintRight_toRightOf="@id/date1"
+        app:layout_constraintTop_toBottomOf="@id/date8"/>
+
+    <TextView
+        android:id="@+id/colon9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/colon"
+        android:fontFamily="@font/montserratbold"
+        android:textColor="#000000"
+        app:layout_constraintLeft_toRightOf="@id/date1"
+        app:layout_constraintHorizontal_bias="0.0"
+        android:textSize="18sp"
+        android:paddingLeft="2dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/colon8"
+        android:paddingStart="2dp"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/time9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/time9"
+        android:fontFamily="@font/montserratbold"
+        android:textColor="#000000"
+        app:layout_constraintLeft_toRightOf="@id/colon9"
+        android:paddingLeft="5dp"
+        app:layout_constraintHorizontal_bias="0.00"
+        android:textSize="18sp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/time8"
+        android:paddingStart="5dp"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/Mins9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Mins"
+        android:fontFamily="@font/montserratbold"
+        android:textColor="#000000"
+        app:layout_constraintLeft_toRightOf="@id/time9"
+        android:paddingLeft="5dp"
+        app:layout_constraintHorizontal_bias="0.00"
+        android:textSize="18sp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Mins8"
+        android:paddingStart="5dp"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/date10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/date10"
+        android:fontFamily="@font/montserratbold"
+        android:textColor="#000000"
+        app:layout_constraintLeft_toLeftOf="@id/date1"
+        android:textSize="18sp"
+        app:layout_constraintRight_toRightOf="@id/date1"
+        app:layout_constraintTop_toBottomOf="@id/date9"/>
+
+    <TextView
+        android:id="@+id/colon10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/colon"
+        android:fontFamily="@font/montserratbold"
+        android:textColor="#000000"
+        app:layout_constraintLeft_toRightOf="@id/date1"
+        app:layout_constraintHorizontal_bias="0.0"
+        android:textSize="18sp"
+        android:paddingLeft="5dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/colon9"
+        android:paddingStart="5dp"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/time10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/time10"
+        android:fontFamily="@font/montserratbold"
+        android:textColor="#000000"
+        app:layout_constraintLeft_toRightOf="@id/colon10"
+        android:paddingLeft="5dp"
+        app:layout_constraintHorizontal_bias="0.00"
+        android:textSize="18sp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/time9"
+        android:paddingStart="5dp"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/Mins10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Mins"
+        android:fontFamily="@font/montserratbold"
+        android:textColor="#000000"
+        app:layout_constraintLeft_toRightOf="@id/time10"
+        android:paddingLeft="5dp"
+        app:layout_constraintHorizontal_bias="0.00"
+        android:textSize="18sp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Mins9"
+        android:paddingStart="5dp"
+        tools:ignore="RtlSymmetry" />
+
+    <ImageButton
+        android:id="@+id/imageButton3"
+        android:layout_width="36sp"
+        android:layout_height="36sp"
+        android:layout_marginLeft="291dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:background="#FFFFFF"
+        android:tint="#000000"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_close_24"
+        tools:ignore="ContentDescription,VectorDrawableCompat"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="291dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
