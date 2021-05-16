@@ -7,17 +7,27 @@
     tools:context=".MainActivity"
     tools:ignore="ExtraText">
 
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:srcCompat="@drawable/android1"
+        app:srcCompat="@drawable/backg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:scaleType="centerCrop"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/manImage"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginTop="49dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/fullman"
         tools:ignore="ContentDescription" />
 
 
@@ -50,7 +60,36 @@
         app:layout_constraintEnd_toEndOf="@+id/imageView"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/b_monk"
+        app:layout_constraintTop_toBottomOf="@id/manImage"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="3dp"
+        android:textSize="36sp"
+        android:textColor="#117B76"
+        android:fontFamily="@font/montserratbold"
+         />
 
+        <TextView
+        android:id="@+id/textView"
+        android:layout_width="290dp"
+        android:layout_height="119dp"
+        android:layout_marginHorizontal="5dp"
+        android:textSize="24sp"
+        android:text="@string/first_page_text"
+        android:textColor="#085B56"
+        android:layout_marginTop="22dp"
+        app:layout_constraintVertical_bias="0.0"
+        android:fontFamily="@font/montserrat"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/imageView2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView2"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

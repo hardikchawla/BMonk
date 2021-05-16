@@ -54,5 +54,10 @@
     <string name="_45">45</string>
     <string name="_20">20</string>
     <string name="_10">10</string>
+    <string name="stats">Stats</string>
+    <string name="b_monk">B Monk</string>
+    <string name="first_page_text">Get ready to unlock the super powers of being human</string>
+    <string name="don_t_show_this_message_again">Don\'t show this message again</string>
+    <string name="focus_time_running">Focus Time</string>
 
 </resources>
