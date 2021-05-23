@@ -24,7 +24,7 @@
     <string name="calm_in_calamity">Calm in calamity</string>
     <string name="aspiring_monk_description">You suddenly realize that work gets completed faster when you give dedicated time to it. You decide to use this discovery to your advantage</string>
     <string name="calmInCalamityDescription">You have started to realize the motion of restless thoughts in your head and you know you have the power to control it. You have just got the taste of the superpowers that being human brings with</string>
-    <string name="glimpseofinnerpeace">glimpseOfInnerPeace</string>
+    <string name="glimpseofinnerpeace">Glimpse of inner peace</string>
     <string name="glimpseOfInnerPeaceDescription">Be it giving a corporate presentation or making your bed. You do it with utmost awareness. You hardly used your entire mental faculty for doing one thing at a time and being present in the moment. This new found improved way of life is quite surprising and startling.</string>
     <string name="_40">40</string>
     <string name="usage_statistics">Usage Statistics</string>
@@ -59,5 +59,10 @@
     <string name="first_page_text">Get ready to unlock the super powers of being human</string>
     <string name="don_t_show_this_message_again">Don\'t show this message again</string>
     <string name="focus_time_running">Focus Time</string>
+    <string name="dnd">DND</string>
+    <string name="super_mode">Super Mode</string>
+    <string name="super_m">Super</string>
+    <string name="mode_s">Mode</string>
+
 
 </resources>

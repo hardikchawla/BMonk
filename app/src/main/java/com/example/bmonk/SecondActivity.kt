@@ -1,29 +1,38 @@
 package com.example.bmonk
 
 import android.annotation.SuppressLint
+import android.app.NotificationManager
 import android.content.Context
 import android.content.DialogInterface
+import android.content.Intent
 import android.media.MediaPlayer
+import android.media.MediaPlayer.OnCompletionListener
+import android.os.Build
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.CompoundButton
 import android.widget.SeekBar
+import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.analytics.ktx.logEvent
+import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_second.*
 import kotlinx.android.synthetic.main.level_dialog.view.*
 import kotlinx.android.synthetic.main.pomodoro_dialog.view.*
 import kotlinx.android.synthetic.main.setting_dialog.view.*
-import kotlinx.android.synthetic.main.usage_stats_dialog.view.*
-import java.text.SimpleDateFormat
-import java.util.*
+
 
 class SecondActivity : AppCompatActivity() {
 
     //Timer variables
     var timerRunning = false
+    var timerFinish = false
     var testNumber = 10L
     var testNumb = 20L
     var testNumb3 = 20
@@ -36,9 +45,10 @@ class SecondActivity : AppCompatActivity() {
     var savedFocus = 0
     var savedBreak = 0
     var savedSession = 0
-    private val defaultFocusTime = 10
-    private val defaultBreakTime = 2
-    private val defaultSessions = 2
+    val defaultFocusTime = 10
+    val defaultBreakTime = 2
+    val defaultSessions = 2
+    var focusTime = 0
 
     //Repeating Timer variables
     var a = 0L
@@ -53,19 +63,47 @@ class SecondActivity : AppCompatActivity() {
 
     //Sound variables
      var sound : MediaPlayer? = null
+    var singleBeep : MediaPlayer? = null
+    var doubleBeep : MediaPlayer? = null
+    var beeps = false
+    var isPlaying = false
 
     //Stats variables
     var totalFocusTime = 0
+    var savedTotalFocusTime = 0
 
     //Current Level variables
     var currentLevel = 1
     var savedCurrentLevel = 0
     var savedCurrentLevelText = ""
+    var asp = "Distracted Baby"
+    var progressMax = 40
+    var savedProgressMax = 0
 
+    //Dnd variables
+    var dndMode = false
+    lateinit var mNotificationManager : NotificationManager
+    var dndDialog = false
+
+    //FireBase
+//    private var mFirebaseAnalytics: FirebaseAnalytics? = null
+
+    //After Stop timer variables
+    var afterFocus = 0L
+    var afterBreak = 0L
+    var afterSession = 0
+
+    @RequiresApi(Build.VERSION_CODES.M)
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
+
+        mNotificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+
+        if (!mNotificationManager.isNotificationPolicyAccessGranted) {
+            showDNDDialog()
+        }
 
         pomodoroDialog()
 
@@ -85,29 +123,9 @@ class SecondActivity : AppCompatActivity() {
 
         loadCurrentLevel()
         loadRemainingTime()
+        loadTotalFocusTime()
 
-//        if(savedRemainingTime <= 0) {
-//            currentLevel++
-//            savedRemainingTime = 0
-//        }
-
-//        if(currentLevel == 2) {
-//            savedCurrentLevel = "Aspiring Monk"
-//            progressBar.max = 240
-//            progressTimeLeft.text = "240"
-//            savedRemainingTime = 240
-//        }
-//
-//        if(currentLevel == 3) {
-//
-//            AspiringMonk.text = "Calm in calamity"
-//        }
-//
-//        if(currentLevel == 4) {
-//
-//            AspiringMonk.text = "Glimpse of inner peace"
-//        }
-
+//        alarmTrigger()
 
     }
 
@@ -138,6 +156,27 @@ class SecondActivity : AppCompatActivity() {
 
     fun startButton(view: View) {
 
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//
+////            if (checkOnOff) {
+////                checkOnOff = false
+////                // DND off
+////                mNotificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_ALL)
+////            } else {
+////                checkOnOff = true
+////                //DND on
+////                mNotificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_NONE)
+////
+////            }
+//
+//            if(mNotificationManager.isNotificationPolicyAccessGranted) {
+//                mNotificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_NONE)
+//                checkOnOff = true
+//                dndMode = true
+//            }
+//
+//        }
+
         startButton.visibility = View.INVISIBLE
         levelUp.visibility = View.INVISIBLE
         progressBar.visibility = View.INVISIBLE
@@ -145,12 +184,28 @@ class SecondActivity : AppCompatActivity() {
         timer.visibility = View.VISIBLE
         stopButton.visibility = View.VISIBLE
         cancelButton.visibility = View.VISIBLE
+        progressText.visibility = View.INVISIBLE
 
         if(sound == null) {
             sound = MediaPlayer.create(this, R.raw.sound_meditation)
 
         }
+
         sound?.start()
+        isPlaying = true
+
+        if(singleBeep == null) {
+            singleBeep = MediaPlayer.create(this, R.raw.single_beep_2)
+
+        }
+        if(doubleBeep == null) {
+            doubleBeep = MediaPlayer.create(this, R.raw.double_beep_2)
+
+        }
+
+        afterFocus = a
+        afterBreak = b
+        afterSession = testNumber3
 
         startStop()
         updateTimer()
@@ -172,7 +227,16 @@ class SecondActivity : AppCompatActivity() {
         if (timerRunning) {
             pauseTimer()
         } else {
-            sound?.start()
+
+            sound?.setOnCompletionListener {
+                isPlaying = false
+            }
+
+            if (isPlaying){
+                sound?.start()
+            }
+
+//            sound?.start()
             startTimer()
         }
 
@@ -222,11 +286,15 @@ class SecondActivity : AppCompatActivity() {
     fun cancelButton(view: View) {
         countDownTimer.cancel()
         testNumber = 0
+        a = 0
         testNumber2 = 0
+        b = 0
         updateTimer()
         updateTimer2()
 
         stopSound()
+
+
 
         timerRunning = false
 
@@ -237,6 +305,13 @@ class SecondActivity : AppCompatActivity() {
         timer.visibility = View.INVISIBLE
         stopButton.visibility = View.INVISIBLE
         cancelButton.visibility = View.INVISIBLE
+        progressText.visibility = View.VISIBLE
+        timerText.visibility = View.INVISIBLE
+
+//        loadStartingVariables()
+        a = afterFocus
+        b = afterBreak
+        testNumb3 = afterSession
     }
 
     @SuppressLint("SetTextI18n")
@@ -309,12 +384,30 @@ class SecondActivity : AppCompatActivity() {
 
         val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
 
-
-        savedRemainingTime = sharedPreferences.getInt("REMAINING_TIME", 1)
+        savedRemainingTime = sharedPreferences.getInt("REMAINING_TIME", 40)
 
         progressTimeLeft.text = savedRemainingTime.toString()
         progressBar.progress = savedRemainingTime
 
+    }
+
+    fun saveTotalFocusTime() {
+
+        val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.apply {
+
+            putInt("TOTAL_FOCUS", totalFocusTime)
+
+        }.apply()
+
+    }
+
+    fun loadTotalFocusTime() {
+
+        val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+
+        savedTotalFocusTime = sharedPreferences.getInt("TOTAL_FOCUS", 0)
 
     }
 
@@ -324,9 +417,9 @@ class SecondActivity : AppCompatActivity() {
         val editor = sharedPreferences.edit()
         editor.apply {
 
-            putString("CURRENT_LEVEL_TEXT", AspiringMonk.toString())
+            putString("CURRENT_LEVEL_TEXT", asp)
             putInt("CURRENT_LEVEL", currentLevel)
-
+            putInt("PROGRESS_MAX", progressMax)
 
         }.apply()
 
@@ -340,6 +433,9 @@ class SecondActivity : AppCompatActivity() {
         AspiringMonk.text = savedCurrentLevelText
 
         savedCurrentLevel = sharedPreferences.getInt("CURRENT_LEVEL", 1)
+        savedProgressMax = sharedPreferences.getInt("PROGRESS_MAX", 40)
+
+        progressBar.max  = savedProgressMax
 
     }
 
@@ -364,16 +460,12 @@ class SecondActivity : AppCompatActivity() {
 
         if(savedCurrentLevel == 1) {
 
-            AspiringMonk.text = "Distracted Baby"
-
             mDialogView.distractedBabyImage.visibility = View.VISIBLE
             mDialogView.distracted_babyText.visibility = View.VISIBLE
             mDialogView.distracted_baby_description.visibility = View.VISIBLE
             mDialogView.distractedBabyDivider.visibility = View.VISIBLE
 
         } else if(savedCurrentLevel == 2) {
-
-            AspiringMonk.text = "Aspiring Monk"
 
             mDialogView.aspiringMonkImage.visibility = View.VISIBLE
             mDialogView.aspiringMonkText.visibility = View.VISIBLE
@@ -382,16 +474,12 @@ class SecondActivity : AppCompatActivity() {
 
         } else if(savedCurrentLevel == 3) {
 
-            AspiringMonk.text = "Calm in calamity"
-
             mDialogView.calmInCalamityImage.visibility = View.VISIBLE
             mDialogView.calmInCalamityText.visibility = View.VISIBLE
             mDialogView.calmInCalamityDescription.visibility = View.VISIBLE
             mDialogView.calmInCalamityDivider.visibility = View.VISIBLE
 
         } else {
-
-            AspiringMonk.text = "Glimpse of inner peace"
 
             mDialogView.glimpseOfInnerPeaceImage.visibility = View.VISIBLE
             mDialogView.glimpseOfInnerPeaceText.visibility = View.VISIBLE
@@ -520,56 +608,66 @@ class SecondActivity : AppCompatActivity() {
 
     }
 
-    fun statsButton(view: View) {
+//    fun statsButton(view: View) {
+//
+//        val mDialogView = LayoutInflater.from(this).inflate(R.layout.usage_stats_dialog, null)
+//        val mBuilder = AlertDialog.Builder(this)
+//                .setView(mDialogView)
+//
+//        val mAlertDialog = mBuilder.show()
+//
+////        TIME_1 = mDialogView.findViewById(R.id.time1)
+//
+////        alarmTrigger()
+//
+//        val dates1 = getCalculatedDate("dd/MM/yyyy", 0)
+//        val dates2 = getCalculatedDate("dd/MM/yyyy", -1)
+//        val dates3 = getCalculatedDate("dd/MM/yyyy", -2)
+//        val dates4 = getCalculatedDate("dd/MM/yyyy", -3)
+//        val dates5 = getCalculatedDate("dd/MM/yyyy", -4)
+//        val dates6 = getCalculatedDate("dd/MM/yyyy", -5)
+//        val dates7 = getCalculatedDate("dd/MM/yyyy", -6)
+//        val dates8 = getCalculatedDate("dd/MM/yyyy", -7)
+//        val dates9 = getCalculatedDate("dd/MM/yyyy", -8)
+//        val dates10 = getCalculatedDate("dd/MM/yyyy", -9)
+//
+//        if(TIME_1 == "0") {
+//            savedTotalFocusTime = 0
+//        }
+//
+//        mDialogView.time1.text = savedTotalFocusTime.toString()
+//
+//        mDialogView.date1.text = dates1
+//        mDialogView.date2.text = dates2
+//        mDialogView.date3.text = dates3
+//        mDialogView.date4.text = dates4
+//        mDialogView.date5.text = dates5
+//        mDialogView.date6.text = dates6
+//        mDialogView.date7.text = dates7
+//        mDialogView.date8.text = dates8
+//        mDialogView.date9.text = dates9
+//        mDialogView.date10.text = dates10
+//
+//        mDialogView.closeButton.setOnClickListener {
+//            mAlertDialog.dismiss()
+//        }
+//
+//    }
 
-        val mDialogView = LayoutInflater.from(this).inflate(R.layout.usage_stats_dialog, null)
-        val mBuilder = AlertDialog.Builder(this)
-                .setView(mDialogView)
-
-        val mAlertDialog = mBuilder.show()
-
-        val dates1 = getCalculatedDate("dd/MM/yyyy", 0)
-        val dates2 = getCalculatedDate("dd/MM/yyyy", -1)
-        val dates3 = getCalculatedDate("dd/MM/yyyy", -2)
-        val dates4 = getCalculatedDate("dd/MM/yyyy", -3)
-        val dates5 = getCalculatedDate("dd/MM/yyyy", -4)
-        val dates6 = getCalculatedDate("dd/MM/yyyy", -5)
-        val dates7 = getCalculatedDate("dd/MM/yyyy", -6)
-        val dates8 = getCalculatedDate("dd/MM/yyyy", -7)
-        val dates9 = getCalculatedDate("dd/MM/yyyy", -8)
-        val dates10 = getCalculatedDate("dd/MM/yyyy", -9)
-
-        if(dates1 == getCalculatedDate("dd/MM/yyyy", 0)) {
-            mDialogView.time1.text = totalFocusTime.toString()
-        }
-
-        mDialogView.date1.text = dates1
-        mDialogView.date2.text = dates2
-        mDialogView.date3.text = dates3
-        mDialogView.date4.text = dates4
-        mDialogView.date5.text = dates5
-        mDialogView.date6.text = dates6
-        mDialogView.date7.text = dates7
-        mDialogView.date8.text = dates8
-        mDialogView.date9.text = dates9
-        mDialogView.date10.text = dates10
-
-        mDialogView.closeButton.setOnClickListener {
-            mAlertDialog.dismiss()
-        }
-
-    }
-
-    @SuppressLint("SimpleDateFormat")
-    fun getCalculatedDate(dateFormat: String?, days: Int): String? {
-        val cal: Calendar = Calendar.getInstance()
-        val s = SimpleDateFormat(dateFormat)
-        cal.add(Calendar.DAY_OF_YEAR, days)
-        return s.format(Date(cal.timeInMillis))
-    }
+//    @SuppressLint("SimpleDateFormat")
+//    fun getCalculatedDate(dateFormat: String?, days: Int): String? {
+//        val cal: Calendar = Calendar.getInstance()
+//        val s = SimpleDateFormat(dateFormat)
+//        cal.add(Calendar.DAY_OF_YEAR, days)
+//        return s.format(Date(cal.timeInMillis))
+//    }
 
     @SuppressLint("SetTextI18n")
     fun repeatTimerOnceAgain(noOfSession : Int) {
+
+//        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        val firebase = Firebase.analytics
+
 
         val session = session2
 
@@ -586,9 +684,30 @@ class SecondActivity : AppCompatActivity() {
                     timerText.visibility = View.VISIBLE
 
                     updateTimerOnceAgainFB2(millisUntilFinished)
+
+
                 }
 
                 override fun onFinish() {
+
+                    if(!beeps) {
+                        singleBeep?.start()
+                        beeps = true
+                    }
+
+
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+
+                        if (mNotificationManager.isNotificationPolicyAccessGranted) {
+                            if (dndMode) {
+                                mNotificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_ALL)
+                                statsButton.visibility = View.VISIBLE
+                                statsButton2.visibility = View.INVISIBLE
+                                dndMode = false
+
+                            }
+                        }
+                    }
 
                     countDownTimer = object : CountDownTimer(b, 1000) {
                         override fun onTick(millisUntilFinished: Long) {
@@ -596,74 +715,129 @@ class SecondActivity : AppCompatActivity() {
                             b = millisUntilFinished
                             breakTb = false
                             timerText.text = "Break Time"
-
                             updateTimerOnceAgainFB2(millisUntilFinished)
+
                         }
 
+                        @RequiresApi(Build.VERSION_CODES.M)
                         @SuppressLint("SetTextI18n")
                         override fun onFinish() {
+
+
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+
+                                    if (mNotificationManager.isNotificationPolicyAccessGranted) {
+
+                                        if(noOfSession != 1) {
+//                                            double_beep?.start()
+                                            if (!dndMode) {
+                                                mNotificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_NONE)
+                                                statsButton2.visibility = View.VISIBLE
+                                                statsButton.visibility = View.INVISIBLE
+                                                dndMode = true
+
+                                            }
+                                        }
+                                    }
+
+                                }
+
+//                            if (!checkOnOff) {
+//                                double_beep?.start()
+//                            }
+
+                            beeps = false
 
                             a = testNumber
                             b = testNumber2
 
                             breakTb = true
 
+
                             //code other part here
                             if(noOfSession == 1) {
 
-                             timerRunning = false
-                             testNumb3 = testNumber3
+//                                if(mNotificationManager.isNotificationPolicyAccessGranted) {
+//                                    mNotificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_ALL)
+//                                    checkOnOff = false
+//
+//                                }
 
-                             totalFocusTime += focNumb*testNumber3
+                                breakTb = false
 
-                             remainingTime = savedRemainingTime - (focNumb*testNumber3)
+                                 timerRunning = false
+                                 timerFinish = true
+                                 testNumb3 = testNumber3
 
-                            saveRemainingTime()
-                            loadRemainingTime()
+//                                 totalFocusTime += focNumb*testNumber3
+                                totalFocusTime = savedTotalFocusTime + focNumb*testNumber3
+                                saveTotalFocusTime()
+                                loadTotalFocusTime()
+                                focusTime = focNumb*testNumber3
 
-                            if(savedRemainingTime <= 0) {
-//                                currentLevel++
-                                savedCurrentLevel++
-
-                                if (savedCurrentLevel == 2) {
-
-//                                    savedCurrentLevelText = "Aspiring Monk"
-                                    remainingTime = 2
-                                    progressBar.max = remainingTime
-
-                                } else if (savedCurrentLevel == 3) {
-
-//                                    savedCurrentLevelText = "Aspiring Monk"
-                                    remainingTime = 3
-                                    progressBar.max = remainingTime
-
-                                } else if (savedCurrentLevel == 4){
-
-//                                    savedCurrentLevelText = "Aspiring Monk"
-                                    remainingTime = 4
-                                    progressBar.max = remainingTime
-
-
+                                //firebase
+                                firebase.logEvent("time") {
+                                    param("totalTime", savedTotalFocusTime.toLong())
+                                    param("focusTime", focusTime.toLong())
                                 }
-//                                saveCurrentLevel()
+
+                                 remainingTime = savedRemainingTime - (focNumb*testNumber3)
 
                                 saveRemainingTime()
                                 loadRemainingTime()
 
-                            }
+                                if(savedRemainingTime <= 0) {
 
-                            startButton.visibility = View.VISIBLE
-                            levelUp.visibility = View.VISIBLE
-                            progressBar.visibility = View.VISIBLE
-                            clock.visibility = View.VISIBLE
-                            timer.visibility = View.INVISIBLE
-                            stopButton.visibility = View.INVISIBLE
-                            cancelButton.visibility = View.INVISIBLE
-                            timerText.visibility = View.INVISIBLE
+                                    if (savedCurrentLevel == 1) {
+                                        currentLevel = 2
+                                        asp = "Aspiring Monk"
+                                        progressMax = 240
 
-                            }
+                                    } else if(savedCurrentLevel == 2) {
+                                        currentLevel = 3
+                                        asp = "Calm in calamity"
+                                        progressMax = 600
+
+                                    } else if(savedCurrentLevel == 3) {
+                                        currentLevel = 4
+                                        asp = "Glimpse of inner peace"
+                                        progressMax = 6000
+                                    }
+
+                                    saveCurrentLevel()
+                                    loadCurrentLevel()
+
+                                    if(savedCurrentLevel == 2) {
+
+                                        remainingTime = 240
+
+                                    } else if (savedCurrentLevel == 3) {
+
+                                        remainingTime = 600
+
+                                    } else if (savedCurrentLevel == 4){
+
+                                        remainingTime = 6000
+
+                                    }
+
+                                    saveRemainingTime()
+                                    loadRemainingTime()
+
+                                }
+
+                                startButton.visibility = View.VISIBLE
+                                levelUp.visibility = View.VISIBLE
+                                progressBar.visibility = View.VISIBLE
+                                clock.visibility = View.VISIBLE
+                                timer.visibility = View.INVISIBLE
+                                stopButton.visibility = View.INVISIBLE
+                                cancelButton.visibility = View.INVISIBLE
+                                timerText.visibility = View.INVISIBLE
+                                progressText.visibility = View.VISIBLE
+
+                                }
                             // till here
-
                             repeatTimerOnceAgain(noOfSession-1)
 
                         }
@@ -741,7 +915,7 @@ class SecondActivity : AppCompatActivity() {
 
     }
 
-    fun loadStartingVariables() {
+    private fun loadStartingVariables() {
 
         focNumb = savedFocus
         a = (focNumb*60*1000).toLong()
@@ -756,5 +930,101 @@ class SecondActivity : AppCompatActivity() {
         session2 = sessNumb
         testNumb3 = sessNumb
     }
+
+    @RequiresApi(Build.VERSION_CODES.M)
+    fun showDNDDialog() {
+
+        val nAlertDialog = AlertDialog.Builder(this)
+        nAlertDialog.setTitle("Request")
+        nAlertDialog.setMessage("Please Allow app to turn DND mode for better functioning. After Clicking Allow, Select B Monk in Settings")
+        nAlertDialog.setPositiveButton("Allow") { dialog: DialogInterface?, which: Int ->
+
+            val intent = Intent(Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS)
+            startActivity(intent)
+
+            dialog?.dismiss()
+
+        }
+        nAlertDialog.setNegativeButton("Cancel") { dialog: DialogInterface?, which: Int ->
+            dialog?.dismiss()
+        }
+        nAlertDialog.show()
+
+    }
+
+    fun dndButton(view: View) {
+
+        val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+        dndDialog = sharedPreferences.getBoolean("firstLaunch", true)
+
+        if(dndDialog) {
+            dndDialog()
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+
+            if(mNotificationManager.isNotificationPolicyAccessGranted) {
+
+                if(!dndMode) {
+                    mNotificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_NONE)
+                    statsButton2.visibility = View.VISIBLE
+                    statsButton.visibility = View.INVISIBLE
+                    Toast.makeText(this,"DND Mode on", Toast.LENGTH_LONG).show()
+                    dndMode = true
+
+                } else {
+                    mNotificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_ALL)
+                    statsButton.visibility = View.VISIBLE
+                    statsButton2.visibility = View.INVISIBLE
+                    Toast.makeText(this,"DND Mode off", Toast.LENGTH_LONG).show()
+                    dndMode = false
+
+                }
+
+            }
+
+        }
+
+    }
+
+    private fun dndDialog() {
+
+        val nAlertDialog = AlertDialog.Builder(this)
+//        nAlertDialog.setTitle("Information")
+        nAlertDialog.setMessage("This will on your DND mode and all your notifications,calls will be on mute during focus time.")
+        nAlertDialog.setPositiveButton("Ok") {dialog: DialogInterface?, which: Int ->
+            dialog?.dismiss()
+        }
+        nAlertDialog.setNeutralButton("Never Show Again") {dialog, which ->
+
+            dialog?.dismiss()
+
+            val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+            val editor = sharedPreferences.edit()
+            editor.apply {
+
+                putBoolean("firstLaunch", false)
+
+            }.apply()
+
+        }
+
+        nAlertDialog.show()
+    }
+
+//    private fun alarmTrigger() {
+//
+//        val calendar: Calendar = Calendar.getInstance()
+//        calendar.set(Calendar.HOUR_OF_DAY, 17)
+//        calendar.set(Calendar.MINUTE, 21)
+//        calendar.set(Calendar.SECOND, 0)
+//        calendar.set(Calendar.MILLISECOND, 0)
+//
+//        val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+//        val intent = Intent(this, MyService::class.java)
+//        val pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+//        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, AlarmManager.INTERVAL_DAY, pendingIntent)
+//
+//    }
 
 }

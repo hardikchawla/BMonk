@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "242499360206",
+    "project_id": "bmonk-11d0e",
+    "storage_bucket": "bmonk-11d0e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:242499360206:android:c074662374a738b6c6879f",
+        "android_client_info": {
+          "package_name": "com.example.bmonk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "242499360206-5ekiu63dvnn5c79jtea57jkkg5dcppdk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-MsJeiwkipruiTiWdMl_jqTgj9wQVtrU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "242499360206-5ekiu63dvnn5c79jtea57jkkg5dcppdk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

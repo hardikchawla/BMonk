@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".SecondActivity">
 
-
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="match_parent"
@@ -206,7 +205,6 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="130dp"
         android:layout_height="35dp"
-        android:max="40"
         android:layout_marginTop="4dp"
         android:layout_marginBottom="145dp"
         android:scaleY="8"
@@ -237,8 +235,8 @@
         tools:ignore="ContentDescription"
         android:layout_marginStart="2.75dp"
         android:layout_marginEnd="199.75dp"
-        android:layout_marginLeft="2.75dp"
-        android:layout_marginRight="199.75dp" />
+        android:layout_marginRight="199.75dp"
+        android:layout_marginLeft="2.75dp" />
 
     <!--    <TextView-->
     <!--        android:id="@+id/test"-->
@@ -294,16 +292,58 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
-        android:onClick="statsButton"
+        android:onClick="dndButton"
         app:srcCompat="@drawable/flower_button"
         tools:ignore="ContentDescription,OnClick,RtlHardcoded" />
 
+    <ImageButton
+        android:id="@+id/statsButton2"
+        android:layout_width="60dp"
+        android:layout_height="50dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        android:onClick="dndButton"
+        app:srcCompat="@drawable/dnd_image"
+        android:visibility="invisible"
+        tools:ignore="ContentDescription,OnClick,RtlHardcoded" />
+
+    <!--    <ImageView-->
+    <!--        android:id="@+id/statsButton"-->
+    <!--        android:layout_width="60dp"-->
+    <!--        android:layout_height="60dp"-->
+    <!--        android:layout_marginRight="10dp"-->
+    <!--        android:layout_marginBottom="15dp"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintRight_toRightOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        app:layout_constraintVertical_bias="1.0"-->
+    <!--        app:srcCompat="@drawable/flower_button"-->
+    <!--        tools:ignore="ContentDescription,OnClick,RtlHardcoded" />-->
+
     <TextView
-        android:id="@+id/statsText"
+        android:id="@+id/dndText1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/stats"
-        android:textSize="20sp"
+        android:layout_marginBottom="3dp"
+        android:fontFamily="@font/montserratbold"
+        android:text="@string/super_m"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/dndText2"
+        app:layout_constraintLeft_toLeftOf="@id/dndText2"
+        app:layout_constraintRight_toRightOf="@id/dndText2"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/dndText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/mode_s"
+        android:textSize="18sp"
         android:fontFamily="@font/montserratbold"
         android:textColor="#FFFFFF"
         app:layout_constraintRight_toRightOf="@id/statsButton"
@@ -311,6 +351,5 @@
         android:layout_marginBottom="5dp"
         app:layout_constraintBottom_toTopOf="@id/statsButton"
         tools:ignore="RtlSymmetry" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
