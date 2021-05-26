@@ -63,6 +63,9 @@
     <string name="super_mode">Super Mode</string>
     <string name="super_m">Super</string>
     <string name="mode_s">Mode</string>
+    <string name="success">Success</string>
+    <string name="congratulations_on_level_up">Congratulations on Level Up</string>
+    <string name="confirm">Confirm</string>
 
 
 </resources>
