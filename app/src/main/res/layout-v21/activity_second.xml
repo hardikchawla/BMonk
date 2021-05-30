@@ -87,6 +87,22 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
+<!--    <Button-->
+<!--        android:id="@+id/AspiringMonk"-->
+<!--        android:paddingHorizontal="5dp"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/currentLevel"-->
+<!--        android:layout_marginTop="6dp"-->
+<!--        app:layout_constraintRight_toRightOf="parent"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        android:text="@string/distracted_baby"-->
+<!--        android:textColor="#FFFFFF"-->
+<!--        android:background="#0CBFB4"-->
+<!--        android:textSize="20sp"-->
+<!--        android:textAllCaps="false"-->
+<!--        android:onClick="currentLevelButton" />-->
+
     <Button
         android:id="@+id/AspiringMonk"
         android:paddingHorizontal="5dp"
@@ -98,22 +114,52 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:text="@string/distracted_baby"
         android:textColor="#FFFFFF"
-        android:background="#0CBFB4"
+        android:background="@drawable/shadow_button"
         android:textSize="20sp"
         android:textAllCaps="false"
         android:onClick="currentLevelButton" />
 
+<!--    <ImageButton-->
+<!--        android:id="@+id/startButton"-->
+<!--        android:layout_width="190dp"-->
+<!--        android:layout_height="167dp"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/AspiringMonk"-->
+<!--        app:layout_constraintRight_toRightOf="parent"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        android:layout_marginTop="73dp"-->
+<!--        app:srcCompat="@drawable/image1"-->
+<!--        android:onClick="startButton"-->
+<!--        tools:ignore="ContentDescription,OnClick" />-->
+
     <ImageButton
         android:id="@+id/startButton"
-        android:layout_width="190dp"
-        android:layout_height="167dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
         app:layout_constraintTop_toBottomOf="@id/AspiringMonk"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="73dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:srcCompat="@drawable/image1"
         android:onClick="startButton"
         tools:ignore="ContentDescription,OnClick" />
+
+<!--    <TextView-->
+<!--        android:id="@+id/timer"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="120dp"-->
+<!--        android:layout_marginTop="100dp"-->
+<!--        android:fontFamily="@font/digital7"-->
+<!--        android:text="@string/_00_00"-->
+<!--        android:gravity="center"-->
+<!--        android:textColor="#085B56"-->
+<!--        android:textSize="110sp"-->
+<!--        android:visibility="invisible"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintRight_toRightOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/AspiringMonk"-->
+<!--        />-->
 
     <TextView
         android:id="@+id/timer"
@@ -123,45 +169,84 @@
         android:fontFamily="@font/digital7"
         android:text="@string/_00_00"
         android:gravity="center"
-        android:textColor="#085B56"
-        android:textSize="110sp"
         android:visibility="invisible"
+        android:textColor="#085B56"
+        android:textSize="120sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/AspiringMonk"
         />
 
+<!--    <Button-->
+<!--        android:id="@+id/stopButton"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="44dp"-->
+<!--        android:layout_marginTop="12dp"-->
+<!--        android:background="#0CBFB4"-->
+<!--        android:fontFamily="@font/lilitaone"-->
+<!--        android:onClick="stopButton"-->
+<!--        android:text="@string/pause"-->
+<!--        android:layout_marginStart="20dp"-->
+<!--        android:visibility="invisible"-->
+<!--        android:textColor="#FFFFFF"-->
+<!--        android:textSize="36sp"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintRight_toLeftOf="@id/cancelButton"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/timer"-->
+<!--        />-->
+
     <Button
         android:id="@+id/stopButton"
         android:layout_width="wrap_content"
-        android:layout_height="44dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:background="#0CBFB4"
+        android:background="@drawable/round_button"
         android:fontFamily="@font/lilitaone"
         android:onClick="stopButton"
         android:text="@string/pause"
-        android:layout_marginStart="20dp"
+        android:padding="5dp"
         android:visibility="invisible"
+        tools:visibility="visible"
+        android:layout_marginStart="20dp"
         android:textColor="#FFFFFF"
-        android:textSize="36sp"
+        android:textSize="35sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/cancelButton"
         app:layout_constraintTop_toBottomOf="@id/timer"
         />
 
+<!--    <Button-->
+<!--        android:id="@+id/cancelButton"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="44dp"-->
+<!--        android:layout_marginTop="12dp"-->
+<!--        android:background="#0CBFB4"-->
+<!--        android:fontFamily="@font/lilitaone"-->
+<!--        android:onClick="cancelButton"-->
+<!--        android:text="@string/stop"-->
+<!--        android:textColor="#FFFFFF"-->
+<!--        android:textSize="36sp"-->
+<!--        android:layout_marginEnd="20dp"-->
+<!--        android:visibility="invisible"-->
+<!--        app:layout_constraintLeft_toRightOf="@id/stopButton"-->
+<!--        app:layout_constraintRight_toRightOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/timer" />-->
+
     <Button
         android:id="@+id/cancelButton"
         android:layout_width="wrap_content"
-        android:layout_height="44dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:background="#0CBFB4"
+        android:background="@drawable/round_button"
         android:fontFamily="@font/lilitaone"
         android:onClick="cancelButton"
         android:text="@string/stop"
+        android:padding="5dp"
         android:textColor="#FFFFFF"
-        android:textSize="36sp"
-        android:layout_marginEnd="20dp"
+        android:textSize="35sp"
+        tools:visibility="visible"
         android:visibility="invisible"
+        android:layout_marginEnd="20dp"
         app:layout_constraintLeft_toRightOf="@id/stopButton"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/timer" />
@@ -175,6 +260,7 @@
         android:textColor="#0BA49A"
         android:textSize="22sp"
         android:visibility="invisible"
+        tools:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

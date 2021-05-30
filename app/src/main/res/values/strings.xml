@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BMonk</string>
+    <string name="app_name">Be Monk - Productivity Focus Timer</string>
     <string name="get_started">Get Started</string>
     <string name="current_level">Current Level</string>
     <string name="aspiring_monk">Aspiring Monk</string>
@@ -66,6 +66,6 @@
     <string name="success">Success</string>
     <string name="congratulations_on_level_up">Congratulations on Level Up</string>
     <string name="confirm">Confirm</string>
-
+    <string name="next_level_up_in_10_mins">Next level up in 40 mins</string>
 
 </resources>

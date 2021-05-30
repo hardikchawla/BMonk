@@ -28,7 +28,6 @@ import kotlinx.android.synthetic.main.level_dialog.view.*
 import kotlinx.android.synthetic.main.pomodoro_dialog.view.*
 import kotlinx.android.synthetic.main.setting_dialog.view.*
 
-
 class SecondActivity : AppCompatActivity() {
 
     //Timer variables
@@ -393,12 +392,18 @@ class SecondActivity : AppCompatActivity() {
             mDialogView.distracted_baby_description.visibility = View.VISIBLE
             mDialogView.distractedBabyDivider.visibility = View.VISIBLE
 
+            mDialogView.distracted_baby_level_up_in.visibility = View.VISIBLE
+            mDialogView.distracted_baby_level_up_in.text = "Next level up in $savedRemainingTime mins"
+
         } else if(savedCurrentLevel == 2) {
 
             mDialogView.aspiringMonkImage.visibility = View.VISIBLE
             mDialogView.aspiringMonkText.visibility = View.VISIBLE
             mDialogView.aspiring_monk_description.visibility = View.VISIBLE
             mDialogView.aspiringMonkDivider.visibility = View.VISIBLE
+
+            mDialogView.aspiring_monk_level_up_in.visibility = View.VISIBLE
+            mDialogView.aspiring_monk_level_up_in.text = "Next level up in $savedRemainingTime mins"
 
         } else if(savedCurrentLevel == 3) {
 
@@ -407,12 +412,18 @@ class SecondActivity : AppCompatActivity() {
             mDialogView.calmInCalamityDescription.visibility = View.VISIBLE
             mDialogView.calmInCalamityDivider.visibility = View.VISIBLE
 
+            mDialogView.calmInCalamityLevelUpIn.visibility = View.VISIBLE
+            mDialogView.calmInCalamityLevelUpIn.text = "Next level up in $savedRemainingTime mins"
+
         } else {
 
             mDialogView.glimpseOfInnerPeaceImage.visibility = View.VISIBLE
             mDialogView.glimpseOfInnerPeaceText.visibility = View.VISIBLE
             mDialogView.glimpseOfInnerPeaceDescription.visibility = View.VISIBLE
             mDialogView.glimpseOfInnerPeaceDivider.visibility = View.VISIBLE
+
+            mDialogView.glimpseOfInnerPeaceLevelUpIn.visibility = View.VISIBLE
+            mDialogView.glimpseOfInnerPeaceLevelUpIn.text = "Next level up in $savedRemainingTime mins"
 
         }
 
